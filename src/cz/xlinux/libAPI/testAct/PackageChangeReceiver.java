@@ -1,12 +1,11 @@
-package com.example.testAct;
-
-import com.example.libAPI.LibAPI;
+package cz.xlinux.libAPI.testAct;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
+
+import cz.xlinux.libAPI.libFce.LibAPI;
 
 public class PackageChangeReceiver extends BroadcastReceiver {
 	private static final String TAG = "BroadcastReceiver";

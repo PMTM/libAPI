@@ -1,7 +1,7 @@
-package com.example.aidl;
+package cz.xlinux.libAPI.aidl;
 
-import com.example.aidl.Message;
-import com.example.aidl.IMqttCb;
+import cz.xlinux.libAPI.aidl.Message;
+import cz.xlinux.libAPI.aidl.IMqttCb;
 
 interface ILogService {
   void log_d(String tag, String message); 

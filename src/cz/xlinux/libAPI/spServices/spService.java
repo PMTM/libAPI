@@ -1,4 +1,4 @@
-package com.example.spServices;
+package cz.xlinux.libAPI.spServices;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,11 +13,12 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.example.aidl.ILogService;
-import com.example.aidl.IMqttCb;
-import com.example.aidl.Message;
-import com.example.testAct.R;
-import com.example.testAct.TestActivity;
+import cz.xlinux.libAPI.aidl.ILogService;
+import cz.xlinux.libAPI.aidl.IMqttCb;
+import cz.xlinux.libAPI.testAct.R;
+
+import cz.xlinux.libAPI.aidl.Message;
+import cz.xlinux.libAPI.testAct.TestActivity;
 
 public class spService extends Service {
 

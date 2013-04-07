@@ -1,4 +1,4 @@
-package com.example.aidl;
+package cz.xlinux.libAPI.aidl;
 
 /* some thing in side */
 parcelable Message;

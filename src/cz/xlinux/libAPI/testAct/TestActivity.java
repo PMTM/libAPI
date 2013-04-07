@@ -1,4 +1,4 @@
-package com.example.testAct;
+package cz.xlinux.libAPI.testAct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +23,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.aidl.ILogService;
-import com.example.aidl.IMqttCb;
-import com.example.aidl.Message;
-import com.example.libAPI.LibAPI;
+import cz.xlinux.libAPI.aidl.ILogService;
+import cz.xlinux.libAPI.aidl.IMqttCb;
+import cz.xlinux.libAPI.testAct.R;
+
+import cz.xlinux.libAPI.aidl.Message;
+import cz.xlinux.libAPI.libFce.LibAPI;
 
 public class TestActivity extends Activity implements OnClickListener {
 	private static final String TAG = "Example";
@@ -59,7 +61,7 @@ public class TestActivity extends Activity implements OnClickListener {
 
 		// Request bind to the service
 		conn = new LogConnection();
-		Intent intent = new Intent("com.example.svc.Logger");
+		Intent intent = new Intent("cz.xlinux.libAPI.svc.Logger");
 		intent.putExtra("version", "1.0");
 		boolean bindSvc = bindService(intent, conn, Context.BIND_AUTO_CREATE);
 		debugToast("bindService = " + bindSvc);

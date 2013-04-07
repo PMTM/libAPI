@@ -1,4 +1,4 @@
-package com.example.aidl;
+package cz.xlinux.libAPI.aidl;
 
 import android.os.Parcel;
 import android.os.Parcelable;

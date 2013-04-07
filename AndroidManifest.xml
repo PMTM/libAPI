@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testAct"
+    package="cz.xlinux.libAPI.testAct"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -9,9 +9,9 @@
         android:targetSdkVersion="17" />
 
     <!-- permission cannot refer to strings in name attribute -->
-    <permission android:name="com.example.acl.svc.ACCESS" />
+    <permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
 
-    <uses-permission android:name="com.example.acl.svc.ACCESS" />
+    <uses-permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
 
     <application
         android:allowBackup="true"
@@ -28,12 +28,12 @@
         </activity>
 
         <service
-            android:name="com.example.spServices.spService"
+            android:name="cz.xlinux.libAPI.spServices.spService"
             android:exported="true"
-            android:permission="com.example.acl.svc.ACCESS"
+            android:permission="cz.xlinux.libAPI.acl.svc.ACCESS"
             android:process=":remote" >
             <intent-filter>
-                <action android:name="com.example.svc.Logger" />
+                <action android:name="cz.xlinux.libAPI.svc.Logger" />
             </intent-filter>
         </service>
 

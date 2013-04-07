@@ -1,4 +1,4 @@
-package com.example.libAPI;
+package cz.xlinux.libAPI.libFce;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
-import com.example.testAct.TestActivity;
+import cz.xlinux.libAPI.testAct.TestActivity;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
