@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TestActivity</string>
-    <string name="testSVC">testSVC</string>
+    <string name="app_name">libAPI</string>
+    <string name="testSVC">Test SVC</string>
+    <string name="testCert">Test Cert</string>
+    <string name="testScan">Test Scan</string>
+    <string name="logText">here the log appears</string>
     <string name="infoApp">test</string>
-    <string name="svcACL">com.example.acl.svc.ACCESS</string>
-    <string name="svcName">com.example.svc.Logger</string>
     <string name="myTicker">ticker string</string>
     <string name="myNotifTitle">notif title string</string>
 

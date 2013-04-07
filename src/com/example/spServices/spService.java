@@ -16,8 +16,8 @@ import android.util.Log;
 import com.example.aidl.ILogService;
 import com.example.aidl.IMqttCb;
 import com.example.aidl.Message;
-import com.example.libAPI.R;
-import com.example.libAPI.TestActivity;
+import com.example.testAct.R;
+import com.example.testAct.TestActivity;
 
 public class spService extends Service {
 
@@ -118,9 +118,9 @@ public class spService extends Service {
 		Notification.Builder builder = new Notification.Builder(ctx);
 
 		// res.getString(R.string.myTicker)
-		Bitmap bmp = BitmapFactory.decodeResource(res, R.drawable.ic_launcher);
+		Bitmap bmp = BitmapFactory.decodeResource(res, R.drawable.ic_drum_large);
 		builder.setContentIntent(contentIntent)
-				.setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bmp)
+				.setSmallIcon(R.drawable.ic_machine).setLargeIcon(bmp)
 				.setTicker(ticker).setWhen(System.currentTimeMillis())
 				.setAutoCancel(true)
 				.setContentTitle(res.getString(R.string.myNotifTitle))
