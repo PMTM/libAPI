@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">TestActivity</string>
+    <string name="testSVC">testSVC</string>
+    <string name="infoApp">test</string>
+    <string name="svcACL">com.example.acl.svc.ACCESS</string>
+    <string name="svcName">com.example.svc.Logger</string>
+    <string name="myTicker">ticker string</string>
+    <string name="myNotifTitle">notif title string</string>
+
 </resources>
