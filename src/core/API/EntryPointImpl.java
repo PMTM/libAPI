@@ -1,5 +1,6 @@
 package core.API;
 
+import android.content.Context;
 import android.os.RemoteException;
 import android.util.Log;
 import aidl.core.API.EntryPoint;
@@ -17,6 +18,11 @@ public class EntryPointImpl extends EntryPoint.Stub {
 	private static OnNewHistoryItem histItemCB;
 	private static OnTicketChange ticketCB;
 	private static OnNewReceipt receiptCB;
+	private Context ctx ;
+	
+	public EntryPointImpl(Context ctx) {
+		this.ctx =ctx;
+	}
 
 	@Override
 	public SecurityWatchdog getSecurityWatchdog() throws RemoteException {
@@ -46,7 +52,7 @@ public class EntryPointImpl extends EntryPoint.Stub {
 	public OnTicketChange getTicketCB() throws RemoteException {
 		Log.d(LOG_TAG, "getTicketCB called");
 		if (ticketCB == null)
-			ticketCB = new OnTicketChangeImpl();
+			ticketCB = new OnTicketChangeImpl(ctx);
 		return ticketCB;
 	}
 

@@ -15,7 +15,7 @@ public class EntryPoint extends Service {
 
 		Log.d(TAG, "onBind: version requested: " + version);
 
-		return new EntryPointImpl();
+		return new EntryPointImpl(this);
 	}
 
 }
