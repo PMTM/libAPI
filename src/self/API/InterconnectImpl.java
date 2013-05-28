@@ -26,4 +26,16 @@ public class InterconnectImpl extends Interconnect.Stub {
 		}
 	}
 
+	@Override
+	public void registerCallBack(aidl.core.API.EntryPoint uiService)
+			throws RemoteException {
+		Log.d(LOG_TAG, "registerCallBack: messenger = " + uiService);
+		if (parentService != null) {
+			parentService.setUIService(uiService);
+			Log.d(LOG_TAG, "call setUIServiceuiService=" + uiService + ")");
+		} else {
+			Log.e(LOG_TAG, "no parentService Available");
+		}
+	}
+
 }

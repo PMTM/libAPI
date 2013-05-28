@@ -16,31 +16,28 @@ public class EntryPointImpl extends aidl.core.API.EntryPoint.Stub {
 	private static OnNewHistoryItem histItemCB;
 	private static OnTicketChange ticketCB;
 	private static OnNewReceipt receiptCB;
-	private static core.API.EntryPoint serviceLink;
+	private static EntryPoint serviceLink;
 
-	public EntryPointImpl(core.API.EntryPoint entryPoint) {
+	public EntryPointImpl(EntryPoint entryPoint) {
 		EntryPointImpl.serviceLink = entryPoint;
 	}
 
 	@Override
 	public SecurityWatchdog getSecurityWatchdog() throws RemoteException {
 		Log.d(LOG_TAG, "getSecurityWatchdog called");
-		if (serviceLink != null) {
-			serviceLink.sendMessage("send message from getSecurityWatchdog()");
-		}
 		if (wd == null)
-			wd = new SecurityWatchdogImpl();
+			wd = new SecurityWatchdogImpl(serviceLink);
 		return wd;
 	}
 
 	@Override
 	public OnCouponChange getCouponCB() throws RemoteException {
 		Log.d(LOG_TAG, "getCouponCB called");
-		if (serviceLink != null) {
-			serviceLink.sendMessage("send message from getCouponCB()");
-		}
+		// if (serviceLink != null) {
+		// serviceLink.sendMessage("send message from getCouponCB()");
+		// }
 		if (couponCB == null)
-			couponCB = new OnCouponChangeImpl();
+			couponCB = new OnCouponChangeImpl(serviceLink);
 		return couponCB;
 	}
 
@@ -48,7 +45,7 @@ public class EntryPointImpl extends aidl.core.API.EntryPoint.Stub {
 	public OnNewHistoryItem getHistoryCB() throws RemoteException {
 		Log.d(LOG_TAG, "getHistoryCB called");
 		if (histItemCB == null)
-			histItemCB = new OnNewHistoryItemImpl();
+			histItemCB = new OnNewHistoryItemImpl(serviceLink);
 		return histItemCB;
 	}
 
@@ -64,7 +61,7 @@ public class EntryPointImpl extends aidl.core.API.EntryPoint.Stub {
 	public OnNewReceipt getReceiptCB() throws RemoteException {
 		Log.d(LOG_TAG, "getReceiptCB called");
 		if (receiptCB == null)
-			receiptCB = new OnNewReceiptImpl();
+			receiptCB = new OnNewReceiptImpl(serviceLink);
 		return receiptCB;
 	}
 }

@@ -55,4 +55,8 @@ public class ValueItem implements Parcelable {
 		this.text = text;
 	}
 
+	public String toString() {
+		return "ValueItem:{ tag: " + tag + " text: " + text + " }";
+	}
+
 }

@@ -8,6 +8,11 @@ import android.util.Log;
 public class OnCouponChangeImpl extends OnCouponChange.Stub {
 
 	private static final String LOG_TAG = "OnCouponChangeImpl";
+	private EntryPoint serviceLink;
+
+	public OnCouponChangeImpl(EntryPoint serviceLink) {
+		this.serviceLink = serviceLink;
+	}
 
 	@Override
 	public void addCoupon(Coupon item) throws RemoteException {

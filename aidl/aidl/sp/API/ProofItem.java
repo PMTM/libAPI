@@ -55,4 +55,8 @@ public class ProofItem implements Parcelable {
 		this.text = text;
 	}
 
+	public String toString() {
+		return "ProofItem:{ tag: " + tag + " text: " + text + " }";
+	}
+
 }
