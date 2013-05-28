@@ -2,7 +2,7 @@ package core.API;
 
 import android.os.RemoteException;
 import android.util.Log;
-import cz.xlinux.libAPI.aidl.SecurityWatchdog;
+import aidl.core.API.SecurityWatchdog;
 
 public class SecurityWatchdogImpl extends SecurityWatchdog.Stub {
 

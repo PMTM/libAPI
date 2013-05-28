@@ -1,4 +1,4 @@
-package cz.xlinux.libAPI.aidl;
+package aidl.core.API;
 
 interface SecurityWatchdog {
 

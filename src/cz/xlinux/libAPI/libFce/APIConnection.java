@@ -1,6 +1,6 @@
 package cz.xlinux.libAPI.libFce;
 
-import cz.xlinux.libAPI.aidl.EntryPoint;
+import aidl.core.API.EntryPoint;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
