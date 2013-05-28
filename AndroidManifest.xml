@@ -8,10 +8,15 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="17" />
 
-    <!-- permission cannot refer to strings in name attribute -->
-    <permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
-
-    <uses-permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
+    <!-- comment: permission cannot refer to strings in name attribute -->
+    <!--
+		This shall be included in the called APP manifest:
+    	<permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
+    -->
+    <!--
+    	This shall be placed in the caller APP manifest
+    	<uses-permission android:name="cz.xlinux.libAPI.acl.svc.ACCESS" />
+    -->
 
     <application
         android:allowBackup="true"
@@ -27,6 +32,8 @@
             </intent-filter>
         </activity>
 
+        <!--
+        This shall be included in the called APP manifest
         <service
             android:name="cz.xlinux.libAPI.spServices.spService"
             android:exported="true"
@@ -36,7 +43,11 @@
                 <action android:name="cz.xlinux.libAPI.svc.Logger" />
             </intent-filter>
         </service>
+        -->
 
+
+        <!--
+        This is a test
         <receiver android:name="PackageChangeReceiver" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -50,6 +61,8 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+        -->
+
     </application>
 
 </manifest>

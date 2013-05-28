@@ -12,8 +12,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
-import cz.xlinux.libAPI.testAct.TestActivity;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -24,8 +22,7 @@ public class LibAPI {
 
 	private final static int flags = PackageManager.GET_SIGNATURES;
 
-	public static void testCert(Context ctx, String packageName,
-			TestActivity act) {
+	public static void testCert(Context ctx, String packageName) {
 		PackageManager pm = ctx.getPackageManager();
 
 		PackageInfo packageInfo = null;
@@ -37,7 +34,7 @@ public class LibAPI {
 		}
 		Signature[] signatures = packageInfo.signatures;
 
-		act.debugToast("Number of signatures: " + signatures.length);
+		// act.debugToast("Number of signatures: " + signatures.length);
 
 		for (Signature sign : signatures) {
 			byte[] cert = sign.toByteArray();
@@ -62,9 +59,9 @@ public class LibAPI {
 				return;
 			}
 
-			act.debugToast("getSigAlgName: " + c.getSigAlgName());
-			act.debugToast("getIssuerDN: " + c.getIssuerDN());
-			act.debugToast("getSubjectDN: " + c.getSubjectDN());
+			// act.debugToast("getSigAlgName: " + c.getSigAlgName());
+			// act.debugToast("getIssuerDN: " + c.getIssuerDN());
+			// act.debugToast("getSubjectDN: " + c.getSubjectDN());
 
 			PublicKey key;
 			// if self signed then it works
@@ -87,7 +84,7 @@ public class LibAPI {
 				e.printStackTrace();
 				return;
 			}
-			act.debugToast("Signature verified");
+			// act.debugToast("Signature verified");
 
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA1");
@@ -102,7 +99,7 @@ public class LibAPI {
 					hexString.append(appendString);
 				}
 
-				act.debugToast("Cert hash: " + hexString.toString());
+				// act.debugToast("Cert hash: " + hexString.toString());
 
 			} catch (NoSuchAlgorithmException e1) {
 				e1.printStackTrace();
@@ -180,7 +177,7 @@ public class LibAPI {
 					hexString.append(appendString);
 				}
 
-				ret+="\nCert hash: " + hexString.toString();
+				ret += "\nCert hash: " + hexString.toString();
 
 			} catch (NoSuchAlgorithmException e1) {
 				return ret + "\n" + e1.getMessage();
