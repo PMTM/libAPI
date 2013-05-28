@@ -1,21 +1,53 @@
 package core.API;
 
+import self.API.InterconnectImpl;
+import aidl.sp.API.Coupon;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 
 public class EntryPoint extends Service {
 
-	protected static final String TAG = "EntryPoint";
+	protected static final String LOG_TAG = "EntryPoint";
+	private Messenger messenger;
 
 	@Override
 	public IBinder onBind(Intent intent) {
 		final String version = intent.getExtras().getString("version");
 
-		Log.d(TAG, "onBind: version requested: " + version);
+		String action = intent.getAction();
+		Log.d(LOG_TAG, "onBind: ver = " + version + ", act = " + action);
 
-		return new EntryPointImpl(this);
+		if (action.equals("core.API.BindLocal")) {
+			return new InterconnectImpl(this);
+		} else {
+			return new EntryPointImpl(this);
+		}
 	}
 
+	public void setMessenger(Messenger messenger) {
+		Log.d(LOG_TAG, "setting messenger = " + messenger);
+		this.messenger = messenger;
+	}
+
+	public void sendMessage(String txt) {
+
+		if (messenger != null) {
+			Message msg = Message.obtain();
+
+			msg.obj = new Coupon("ahoj",txt);
+			// msg.obj = txt;
+
+			try {
+				messenger.send(msg);
+			} catch (android.os.RemoteException e1) {
+				Log.w(getClass().getName(), "Exception sending message", e1);
+			}
+		} else {
+			Log.d(LOG_TAG, "no messenger set");
+		}
+	}
 }
