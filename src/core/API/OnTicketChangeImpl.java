@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class OnTicketChangeImpl extends OnTicketChange.Stub {
 
-	private static final String LOG_TAG = "OnCouponChangeImpl";
+	private static final String LOG_TAG = "OnTicketChangeImpl";
 	private EntryPoint serviceLink;
 	private OnTicketChange ticketCB;
 
@@ -37,36 +37,36 @@ public class OnTicketChangeImpl extends OnTicketChange.Stub {
 	@Override
 	public void addTicket(Ticket item) throws RemoteException {
 		Log.d(LOG_TAG, "addTicket: " + item);
+		if (serviceLink != null) {
+			String str = new String(item.toString());
+			Log.e(LOG_TAG, "create comment " + str);
+			serviceLink.createCommentUp("[+]" + str);
+		} else {
+			Log.e(LOG_TAG,"cannot create db record");
+		}
 		if (ticketCB != null) {
 			ticketCB.addTicket(item);
 		} else {
-			Log.e(LOG_TAG,"ticketCB not set");
+			Log.e(LOG_TAG, "ticketCB not set");
 			refreshCB();
 		}
-		// if (ctx != null) {
-		// Intent intent = new Intent("core.API.SECOND");
-		// intent.putExtra("type", "ticket");
-		// intent.putExtra("op", "addTicket");
-		// intent.putExtra("ticket", item);
-		// ctx.sendOrderedBroadcast(intent, null);
-		// }
 	}
 
 	@Override
 	public void removeTicket(Ticket item) throws RemoteException {
 		Log.d(LOG_TAG, "removeTicket: " + item);
+		if (serviceLink != null) {
+			String str = new String(item.toString());
+			Log.e(LOG_TAG, "create comment " + str);
+			serviceLink.createCommentUp("[-]" + str);
+		} else {
+			Log.e(LOG_TAG,"cannot create db record");
+		}
 		if (ticketCB != null) {
 			ticketCB.removeTicket(item);
 		} else {
-			Log.e(LOG_TAG,"ticketCB not set");
+			Log.e(LOG_TAG, "ticketCB not set");
 			refreshCB();
 		}
-		// if (ctx != null) {
-		// Intent intent = new Intent("core.API.MISC");
-		// intent.putExtra("type", "ticket");
-		// intent.putExtra("op", "addTicket");
-		// intent.putExtra("ticket", item);
-		// ctx.sendOrderedBroadcast(intent, null);
-		// }
 	}
 }
