@@ -1,6 +1,6 @@
 package cz.xlinux.db;
 
-public class Comment {
+public class XComment {
 	private long id;
 	private String comment;
 
