@@ -1,3 +1,4 @@
+
 package core.API;
 
 import cz.xlinux.db.MyContentProvider;
@@ -7,6 +8,7 @@ import android.app.Service;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
@@ -16,7 +18,9 @@ import android.widget.Toast;
 public class EntryPoint extends Service {
 
     protected static final String LOG_TAG = "EntryPoint";
+
     private Messenger messenger;
+
     private aidl.core.API.EntryPoint uiService;
 
     // private CommentsDataSource datasource;
@@ -32,7 +36,10 @@ public class EntryPoint extends Service {
         final String version = intent.getExtras().getString("version");
 
         String action = intent.getAction();
-        Log.d(LOG_TAG, "onBind: ver = " + version + ", act = " + action);
+        String callingApp = getPackageManager().getNameForUid(Binder.getCallingUid());
+
+        Log.d(LOG_TAG, "onBind: ver = " + version + ", act = " + action + ", callingApp(not so:-) = "
+                + callingApp);
 
         if (action.equals("core.API.BindLocal")) {
             return new InterconnectImpl(this);
@@ -88,7 +95,15 @@ public class EntryPoint extends Service {
         // datasource.open();
         // A client is binding to the service with bindService(),
         // after onUnbind() has already been called
+
+        final String version = intent.getExtras().getString("version");
+        
         Log.d(LOG_TAG, "onRebind(intent=" + intent + ")");
+        String action = intent.getAction();
+        String callingApp = getPackageManager().getNameForUid(Binder.getCallingUid());
+
+        Log.d(LOG_TAG, "onRebind: ver = " + version + ", act = " + action + ", callingApp = "
+                + callingApp);
     }
 
     @Override
@@ -103,7 +118,6 @@ public class EntryPoint extends Service {
         values.put(TableItems.COLUMN_NAME, str);
 
         @SuppressWarnings("unused")
-        Uri todoUri = getContentResolver().insert(
-                MyContentProvider.CONTENT_URI, values);
+        Uri todoUri = getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
     }
 }
