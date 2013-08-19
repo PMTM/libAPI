@@ -11,6 +11,11 @@ import aidl.core.API.OnNewHistoryItem;
 import aidl.core.API.OnNewReceipt;
 import aidl.core.API.OnTicketChange;
 import aidl.core.API.SecurityWatchdog;
+
+import aidl.core.API.AbstractFunInterface;
+import aidl.core.API.AbstractJoyInterface;
+import aidl.core.API.AbstractBestInterface;
+
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -101,6 +106,24 @@ public class EntryPointImpl extends aidl.core.API.EntryPoint.Stub {
         if (receiptCB == null)
             receiptCB = new OnNewReceiptImpl(serviceLink);
         return receiptCB;
+    }
+
+    @Override
+    public AbstractFunInterface getFunAPI(String verId) throws RemoteException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public AbstractJoyInterface getJoyAPI(String verId) throws RemoteException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public AbstractBestInterface getBestAPI(String verId) throws RemoteException {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

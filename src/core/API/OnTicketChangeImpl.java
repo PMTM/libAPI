@@ -35,7 +35,7 @@ public class OnTicketChangeImpl extends OnTicketChange.Stub {
 	}
 
 	@Override
-	public void addTicket(Ticket item) throws RemoteException {
+	public void addTicket(String dummy, Ticket item) throws RemoteException {
 		Log.d(LOG_TAG, "addTicket: " + item);
 		if (serviceLink != null) {
 			String str = new String(item.toString());
@@ -45,7 +45,7 @@ public class OnTicketChangeImpl extends OnTicketChange.Stub {
 			Log.e(LOG_TAG,"cannot create db record");
 		}
 		if (ticketCB != null) {
-			ticketCB.addTicket(item);
+			ticketCB.addTicket(dummy,item);
 		} else {
 			Log.e(LOG_TAG, "ticketCB not set");
 			refreshCB();
@@ -69,4 +69,5 @@ public class OnTicketChangeImpl extends OnTicketChange.Stub {
 			refreshCB();
 		}
 	}
+
 }
